@@ -27,7 +27,7 @@ body {
             to bottom,
             rgba(126, 213, 111, 0.8),
             rgba(40, 180, 131, 0.8)),
-            url(../img/hero.jpg
+    url(../img/hero.jpg
     );
     background-size: cover;
     background-position: top;
@@ -54,6 +54,9 @@ body {
 .heading-primary {
     color: #FFF;
     text-transform: uppercase;
+
+    /* to fix animation vertical shaking*/
+    backface-visibility: hidden;
 }
 
 .heading-primary-main {
@@ -61,6 +64,18 @@ body {
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+
+    /* equal to property 'animation';
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    */
+    animation: moveInLeft 2s ease-out;
+
+    /* unused but very interesting props
+    animation-delay: 3s;
+    animation-iteration-count: 3;
+    */
 }
 
 .heading-primary-sub {
@@ -68,4 +83,43 @@ body {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 17.4px;
+    animation: moveInRight 2s ease-out;
+}
+
+/** text 'OutDoors is where life happens' animation, outdoors came from the left, is where... came from the right
+ * 3 points, from the beginning, from the 80% percentage, at 100% of percentage
+ *  the next properties will control which element will use this animations
+ *   animation-name: moveItLeft;
+ *   animation-duration: 5s;
+*/
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }

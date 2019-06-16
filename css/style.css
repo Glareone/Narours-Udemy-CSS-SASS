@@ -126,9 +126,26 @@ body {
     }
 }
 
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    80% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
 /* link state of button, blue at start and then purple if visited */
 .btn:link,
 .btn:visited {
+    position: relative;
     text-transform: uppercase;
     text-decoration: none;
     padding: 15px 40px;
@@ -150,4 +167,31 @@ body {
 .btn-white {
     background-color: #FFF;
     color: #777;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #FFF;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6); /* pseudo 'after' element on hover */
+    opacity: 0; /* set to invisible when transform will be finished (at the end of animation) */
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards; /* apply 0% before the animation starts */
 }

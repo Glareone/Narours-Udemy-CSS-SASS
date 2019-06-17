@@ -1,0 +1,22 @@
+{
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "Landing page for Natours",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Glareone/Narours-Udemy-CSS-SASS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Glareone/Narours-Udemy-CSS-SASS/issues"
+  },
+  "homepage": "https://github.com/Glareone/Narours-Udemy-CSS-SASS#readme",
+  "devDependencies": {
+    "node-sass": "^4.12.0"
+  }
+}

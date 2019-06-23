@@ -1,0 +1,44 @@
+.card {
+  perspective: 150rem; // this property means how card rotates. without it the card will rotate with non-natural manner.
+  -moz-perspective: 150rem; // mozilla doesn't maintain this property by default, that's why we need to use -moz prefix
+                            // if we select 1500rem (very big value) - it will work as the same as without perspective at all
+                            // with 15 rem - it will work on very bizarre manner (rotates with dimension which is too close to screen)
+  position: relative;
+  height: 50rem;  // we need to specify height because card__side is absolute positioning and card lost his height
+                  // and that's why it lost it's perspective.
+
+  &__side {
+    color: $color-white;
+    font-size: 2rem;
+    height: 50rem;
+    transition: all .8s ease;
+    position: absolute; // card component then will lose his height and will collapse, we need to fix him
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+    &--front {
+      background-color: $color-white;
+    }
+
+    &--back {
+      background-color: green;
+      transform: rotateY(180deg);
+
+      &-1 {
+        background-image: linear-gradient(to right, $color-secondary-light, $color-secondary-dark);
+      }
+    }
+  }
+
+  &:hover &__side--front { //card:hover card__side (card_side when card is hovered)
+    transform: rotateY(180deg);
+  }
+
+  &:hover &__side--back { //card:hover card__side (card_side when card is hovered)
+    transform: rotateY(0);
+  }
+}

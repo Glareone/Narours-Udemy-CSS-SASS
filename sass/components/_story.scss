@@ -1,0 +1,31 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, .1);
+  background-color: $color-white;
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  transform: skewX(-12deg);
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left; // it has to be floated only when width and height are set.
+    shape-outside: circle(50% at 50% 50%); // radius at center coordinates
+    -webkit-shape-outside: circle(50% at 50% 50%); // for Safari
+
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg); // margin between round image and text which should be rounded on the left
+    // also we add SkewX here and for __text instead of adding to & > * selector because multiple transform properties won't work
+  }
+
+  &__img {
+    height: 100%; // should be set to fit image in circle
+  }
+
+  &__text {
+    transform: skewX(12deg);
+  }
+}

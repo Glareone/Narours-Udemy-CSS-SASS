@@ -14,6 +14,7 @@
     border-bottom: 3px solid transparent; // border-bottom on the focus moves email address input element on 3px down
     width: 90%;
     display: block;
+    transition: all .3s;
 
     &:focus {
       outline: none;
@@ -47,5 +48,58 @@
     opacity: 0;
     visibility: hidden; // we use both of it because we can't animate visibility
     transform: translateY(-4rem);
+  }
+
+
+  &__radio-group {
+    width: 49%;
+    display: inline-block;
+  }
+
+  // we hide the real input radio button to replace it with styled radio button which is based on pseudo :after class and span.
+  // take a look on the styles and description at the bottom of this scss file.
+  &__radio-input {
+    display: none;
+  }
+
+  &__radio-label {
+    position: relative; // for our new radio buttons which is spans
+    font-size: $default-font-size;
+    cursor: pointer;
+    padding-left: 5rem;
+  }
+
+  // there is no way to style radio button using css. That's why we need to style span and hide our original radio inputs
+  &__radio-button {
+    display: inline-block;
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid $color-primary;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: -.4rem;
+
+    &::after { // inner dot inside span which is round (border-radius 50%)
+      content: "";
+      display: block;
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      position: absolute; // no need to specify relative position to radio-button class, it's already absolute
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $color-primary;
+      opacity: 0; // we make this dot inside pseudo radio button invisible. It will be the basic state - unselected
+      transition: opacity .2s; // time to change the state
+    }
+  }
+
+  // Why we do that? to make the dot inside pseudo radio button (based on span) visible - we have to rely on :checked state of real input and then make the opacity to 1.
+  // sibling selector, we could use + because span is not a direct child of radio-input.
+  // But we will use ~ , we will select label which is in the same container and then - her child span::after pseudo class
+  &__radio-input:checked ~ &__radio-label &__radio-button::after {
+    opacity: 1;
   }
 }

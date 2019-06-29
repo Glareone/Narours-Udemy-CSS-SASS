@@ -1,5 +1,6 @@
 /* link state of button, blue at start and then purple if visited */
 .btn {
+  &, // added because button doesn't have link and visited pseudo classes.
   &:link,
   &:visited {
     position: relative;
@@ -10,6 +11,10 @@
     border-radius: 10rem;
     transition: all .2s;
     font-size: $default-font-size;
+
+    // Change for the <button> elements because we start using real button with this class (and it has a border)
+    border: none;
+    cursor: pointer;
   }
 
   &:hover {
@@ -22,7 +27,9 @@
     }
   }
 
-  &:active {
+  &:active,
+  &:focus { //focus added to prevent blue border onClick for button
+    outline: 0;
     transform: translateY(-1px);
     box-shadow: 0 .5rem 1rem rgba($color-black,.25); /* x y blur */
   }

@@ -99,6 +99,7 @@
 
   // Icon
   &__icon {
+    user-select: none;
     position: relative;
     margin-top: 3.5rem; // to center our burger
 
@@ -116,11 +117,12 @@
       content: "";
       position: absolute;
       left: 0;
-      transition: transition .2s
+      transition: all .2s;
     }
 
     &::before {
       top: -.8rem;
+
     }
 
     &::after {
@@ -136,5 +138,19 @@
     top: 1rem;
   }
 
-  
+  &__checkbox:checked + &__button &__icon { //select the button from the same parent (immediately after checkbox), and then its child icon
+    background-color: transparent; //make the span invisible
+  }
+
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0; // move it back to the center
+    transform: rotate(135deg); // 180 - 45 deg
+    // if we would like to use rotation around some point of element - we could use transform-origin:
+    // transform-origin: right; // around right dot of the line
+  }
+
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0; // move it back to the center
+    transform: rotate(-135deg); // 180 - 45 deg
+  }
 }

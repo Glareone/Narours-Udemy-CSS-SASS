@@ -13,8 +13,9 @@
     right: 6rem; // that's why the menu button is wide then background (7rem > 6.5rem)
     border-radius: 50%;
     z-index: 1002;
-
+    text-align: center;
     box-shadow: 0 1rem 2rem  rgba($color-black, .1);
+    cursor: pointer;
   }
 
   &__background {
@@ -86,6 +87,7 @@
     }
   }
 
+  // Functionality of nav button
   &__checkbox:checked ~ &__background { // we used sibling selector to select background which will be changed if our checkbox is checked.
     transform: scale(90); // scaling size of background from navigation menu button
   }
@@ -94,4 +96,45 @@
     opacity: 1;
     width: 100%; // scaling size of nav and change its opacity to 1.
   }
+
+  // Icon
+  &__icon {
+    position: relative;
+    margin-top: 3.5rem; // to center our burger
+
+    &, // for 3 "burger lines"
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background-color: $color-grey-dark-3;
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: transition .2s
+    }
+
+    &::before {
+      top: -.8rem;
+    }
+
+    &::after {
+      top: .8rem;
+    }
+  }
+
+  &__button:hover &__icon:before {
+    top: -1rem;
+  }
+
+  &__button:hover &__icon:after {
+    top: 1rem;
+  }
+
+  
 }

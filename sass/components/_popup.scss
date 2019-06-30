@@ -7,6 +7,10 @@
   background-color: rgba($color-black, .9);
   z-index: 1003;
 
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s;
+
   &__content {
     @include center-top-horizontal;
 
@@ -17,6 +21,11 @@
     height: 50rem;
     box-shadow: 0 2rem 4rem rgba($color-black, .2);
     border-radius: 3px;
+
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.2); // we need to specify translate here again because scale will not work
+    // scale will override transform from mixin center-top-horizontal because it contains transform: translate
+    transition: all .4s .2s; //.2s is pause before actions
   }
 
   &__left {
@@ -44,5 +53,35 @@
     column-count: 2; //automatically creates 3 columns for text
     column-gap: 6rem; // distance between columns
     column-rule: 1px solid $color-grey-light-2; // color of the gap borders
+  }
+
+  // Open states for popup
+  &:target { // raises when we clicked on the button which ties with anchor #popup (and our popup has id="popup")
+    opacity: 1;
+    visibility: visible;
+  }
+
+  // Open states for popup
+  &:target &__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); //we specifies how popup should appears
+  }
+
+  &__close {
+    &:link,
+    &:visited {
+      display: inline-block;
+      color: $color-grey-dark;
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 3.5rem;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
   }
 }

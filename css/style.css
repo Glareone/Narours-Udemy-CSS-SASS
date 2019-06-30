@@ -12,7 +12,8 @@ html {
   /* 10px from default 16px browser font-size, do never set the default size in px here */ }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  position: relative; }
 
 /** text 'OutDoors is where life happens' animation, outdoors came from the left, is where... came from the right
  * 3 points, from the beginning, from the 80% percentage, at 100% of percentage
@@ -478,6 +479,44 @@ body {
 
 .form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
   opacity: 1; }
+
+.popup {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1003; }
+  .popup__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: table;
+    overflow: hidden;
+    width: 75%;
+    background-color: #FFF;
+    height: 50rem;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    border-radius: 3px; }
+  .popup__left {
+    width: 33.3333%;
+    display: table-cell; }
+  .popup__right {
+    width: 66.6667%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 3rem 5rem; }
+  .popup__img {
+    display: block;
+    width: 100%; }
+  .popup__text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+    column-count: 2;
+    column-gap: 6rem;
+    column-rule: 1px solid #eee; }
 
 .header {
   position: relative;

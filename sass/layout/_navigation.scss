@@ -1,0 +1,82 @@
+.navigation {
+  &__checkbox {
+    display: none;
+
+  }
+
+  &__button { // menu button
+    background-color: $color-white;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    top: 6rem;
+    right: 6rem; // that's why the menu button is wide then background (7rem > 6.5rem)
+    border-radius: 50%;
+    z-index: 1002;
+  }
+
+  &__background {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%; // round button in the right corner
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient($color-primary-light, $color-primary-dark); //it starts in the middle of the gradient and goes outside
+    z-index: 1000;
+
+    transform: scale(90);
+  }
+
+  &__nav {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0; // starts from top and right
+    z-index: 1001;
+  }
+
+  &__list {
+    position: absolute;
+    @include center-top-horizontal;
+    list-style: none;
+    text-align: center;
+  }
+
+  &__item {
+    margin: 1rem;
+  }
+
+  &__link {
+    &:link, &:visited {
+      display: inline-block;
+      font-size: 3rem;
+      font-weight: 300;
+      color: $color-white;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%); //effect when background is filled by color with "cut" line from top right to bottom left
+      background-size: 230%; // if we increased it the cut-line border will move to right because.
+      // if it will be 200% - the border will gone away entirely (it would be true, but we have 120deg gradient and our background-image is inclined to the right.
+      // that's why we need to set 220% to hide background image entirely and also to fill text-container entirely on the hover too.
+      // pay attention, 220% could be not enough for short text-buttons and wide screens. need to text all of them.
+      // with 100% it will be in the center of element
+      transition: all .4s;
+    }
+
+    span {
+      margin-right: 1rem;
+      display: inline-block;
+    }
+
+    &:hover,
+    &:active {
+      background-position: 100%; // this animation moves from 0% to 100% of it's position.
+      color: $color-primary;
+      transform: translateX(1rem); // shifts the text a little bit right
+    }
+
+  }
+}

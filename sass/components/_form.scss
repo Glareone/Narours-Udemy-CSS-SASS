@@ -87,9 +87,7 @@
       width: 1.3rem;
       border-radius: 50%;
       position: absolute; // no need to specify relative position to radio-button class, it's already absolute
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      @include center-top-horizontal;
       background-color: $color-primary;
       opacity: 0; // we make this dot inside pseudo radio button invisible. It will be the basic state - unselected
       transition: opacity .2s; // time to change the state

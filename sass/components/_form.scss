@@ -86,7 +86,8 @@
       height: 1.3rem;
       width: 1.3rem;
       border-radius: 50%;
-      position: absolute; // no need to specify relative position to radio-button class, it's already absolute
+      // no need to specify relative position to radio-button class, it's already absolute
+      // position: absolute property moved to mixin from here.
       @include center-top-horizontal;
       background-color: $color-primary;
       opacity: 0; // we make this dot inside pseudo radio button invisible. It will be the basic state - unselected

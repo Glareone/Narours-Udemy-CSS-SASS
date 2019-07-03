@@ -1,3 +1,31 @@
+/*
+  0 - 600px - phone
+  600px - 900px - tablet portrait mode
+  900ps - 1200px - tablet landscape
+  [1200px - 1800px] is where our normal styles are applied
+  1800px + - big desktop
+ */
+/* I left it for testing purposes
+@mixin respond-phone {
+  @media (max-width:600px) {
+    @content // can allow use the blocks of code which we assigned to mixin
+  }
+}
+*/
+/*
+  $breakpoint argument choices:
+  - phone
+  - tab-port
+  - tab-land
+  - big-desktop
+
+  KEEP IN MIND THAT EM AND REM WHICH COULD BE USED HERE ARE NOT AFFECTED FROM STYLES (for example by font-size)
+  THE VARIABLE FOR BOTH OF THEM USE VARIABLE DIRECTLY FROM BROWSER
+  WE WILL USE "EM" BECAUSE THE BROWSERS SUPPORT THIS VALUE BETTER (Comes from tests from StackOverflow)
+
+  1em = 16px;
+  1rem = 16px;
+*/
 *,
 *::after,
 *::before {
@@ -10,6 +38,15 @@ html {
   /* this global definition what 1rem is */
   font-size: 62.5%;
   /* 10px from default 16px browser font-size, do never set the default size in px here */ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   box-sizing: border-box;

@@ -9,6 +9,24 @@
 html {
   /* this global definition what 1rem is */
   font-size: 62.5%; /* 10px from default 16px browser font-size, do never set the default size in px here */
+
+  // this one is not needed because mixin with tab-port also has the same font-size and his media query covers phone width size.
+  // max-width: 56.25em -> lesser or equal to 900px
+  //@include respond(phone) {
+  //  font-size: 50%;
+  //}
+
+  @include respond(tab-land) { // width <= 900
+    font-size: 56.25%; // 1 rem = 9px, 9/16px = 56.25%
+  }
+
+  @include respond(tab-port) { // width <= 600
+    font-size: 50%; // 1 rem = 8px, 8/16px = 50%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1 rem = 12px, 12/16 = 75%
+  }
 }
 
 body {

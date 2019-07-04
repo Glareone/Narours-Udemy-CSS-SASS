@@ -75,10 +75,30 @@
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba($color-black, .3);
 
-  height: 50rem;
+  @include respond(tab-land) { // it starts looking bizarre from tab-landscape
+    background-image: linear-gradient(105deg, rgba($color-white, .9) 0%, rgba($color-white, .9) 65%, transparent 65%), url("../img/nat-10.jpg");
+    -webkit-background-size: cover;
+    background-size: cover; // we changed it because basically for desktop devices image tries to fit by the width (that's what background-size: 100%; means)
+    // that's why we need to change it to cover
+  }
+
+  @include respond(tab-port) { // it starts looking bizarre from tab-landscape
+    background-image: linear-gradient(to right, rgba($color-white, .9) 0%, rgba($color-white, .9) 100%), url("../img/nat-10.jpg");
+    -webkit-background-size: cover;
+    background-size: cover; // we changed it because basically for desktop devices image tries to fit by the width (that's what background-size: 100%; means)
+    // that's why we need to change it to cover
+  }
 
   &__form {
     width: 50%;
     padding: 6rem;
+
+    @include respond(tab-land) {
+      width: 65%;
+    }
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
   }
 }

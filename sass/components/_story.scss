@@ -4,10 +4,18 @@
   box-shadow: 0 3rem 6rem rgba($color-black, .1);
   background-color: rgba($color-white, .6);
   border-radius: 3px;
-  padding: 6rem;
-  padding-left: 9rem;
+  padding: 6rem 6rem 6rem 9rem;
   font-size: $default-font-size;
   transform: skewX(-12deg);
+
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem 4rem 4rem 7rem;
+  }
+
+  @include respond(phone) {
+    transform: skewX(0); // we deleted skew for phone devices to make story component rectangular-like back.
+  }
 
   &__shape {
     position: relative;
@@ -21,6 +29,10 @@
     transform: translateX(-3rem) skewX(12.01deg); // margin between round image and text which should be rounded on the left
     // also we add SkewX here and for __text instead of adding to & > * selector because multiple transform properties won't work
     // 12.0deg here instead of 12deg to fix weird bug - 1px image on the left and right sides of rectangle around image circle
+
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0); // we deleted skew for phone devices to make story component rectangular-like back.
+    }
   }
 
   &__img {
@@ -31,6 +43,10 @@
 
   &__text {
     transform: skewX(12deg);
+
+    @include respond(phone) {
+      transform: skewX(0); // we deleted skew for phone devices to make story component rectangular-like back.
+    }
   }
 
   &__caption {

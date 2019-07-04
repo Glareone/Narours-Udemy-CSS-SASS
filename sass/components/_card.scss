@@ -1,3 +1,5 @@
+// FLIP CARD COMPONENT FOR DESKTOP
+// YOU COULD FIND A NEW ONE FOR TABLETS BELOW, INSIDE MEDIA QUERY
 .card {
   // FUNCTIONALITY
   perspective: 150rem; // this property means how card rotates. without it the card will rotate with non-natural manner.
@@ -143,5 +145,55 @@
   &__price-value {
     font-size: 6rem;
     font-weight: 100;
+  }
+
+
+  // COMPONENT FOR TAB-PORT.
+  @include respond(tab-port) {
+    // we need to specify height because card__side is absolute positioning and card lost his height
+    // and that's why it lost it's perspective.
+    height: auto;
+    border-radius: 3px;
+    background-color: $color-white;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+    &__side {
+      // we changed position from absolute to relative because we are totally reworking our flip card component
+      // this component for mobile devices will not flip and will contain book now button only on the front side.
+      height: auto;
+      position: relative;
+      box-shadow: none;
+
+      &--back {
+        transform: rotateY(0);
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    &:hover &__side--front { // card is not rotating anymore on tap devices
+      transform: rotateY(0);
+    }
+
+    &__details {
+      padding: 1rem 3rem;
+    }
+
+    // FRONT SIDE STYLING
+    &__cta {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
+
+    &__price-box {
+      margin-bottom: 3rem;
+    }
+
+    &__price-value {
+      font-size: 4rem;
+    }
   }
 }

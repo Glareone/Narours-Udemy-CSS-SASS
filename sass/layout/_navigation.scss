@@ -1,7 +1,6 @@
 .navigation {
   &__checkbox {
     display: none;
-
   }
 
   &__button { // menu button
@@ -16,9 +15,19 @@
     text-align: center;
     box-shadow: 0 1rem 2rem  rgba($color-black, .1);
     cursor: pointer;
+
+    @include respond(tab-port) {
+      top: 4rem;
+      right: 4rem;
+    }
+
+    @include respond(phone) {
+      top: 3rem;
+      right: 3rem;
+    }
   }
 
-  &__background {
+  &__background { // the point which navigation will be appeared from.
     height: 6rem;
     width: 6rem;
     border-radius: 50%; // round button in the right corner
@@ -30,6 +39,16 @@
 
     transition: transform .8s cubic-bezier(.86, 0, .07, 1); //animate navi menu opening
     // we could get new functions and test them in www.easings.net
+
+    @include respond(tab-port) {
+      top: 4.5rem;
+      right: 4.5rem;
+    }
+
+    @include respond(phone) {
+      top: 3.5rem;
+      right: 3.5rem;
+    }
   }
 
   &__nav {

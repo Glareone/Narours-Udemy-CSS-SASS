@@ -153,7 +153,9 @@
 
 
   // COMPONENT FOR TAB-PORT.
-  @include respond(tab-port) {
+  // we changed this line because Ipad in landscape mode doesn't have hover and they work incorrect (can't see "book now" buttons)
+  // @include respond(tab-port) {
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     // we need to specify height because card__side is absolute positioning and card lost his height
     // and that's why it lost it's perspective.
     height: auto;

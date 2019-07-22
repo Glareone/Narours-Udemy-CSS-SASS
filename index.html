@@ -66,9 +66,42 @@
             </div>
             <div class="col-1-of-2">
                 <div class="composition">
+                    <!-- we don't use density descriptors here, we use width descriptor and sizes attribute -->
+                    <!-- in sizes attribute we would like to inform browser about image width for different resolutions -->
+                    <!-- 20vw comes from 171px (image width) divided on 900px (max-width value) = ~20% = 20vw -->
+                    <!-- 30vw comes from 171px (image width) divided on 600px (max-width value) = ~30% = 30vw -->
+                    <!-- px was replaced with em resolution. 600/16 = 37.5em. 900/16 = 56.25em -->
+                    <!-- 300px is default value -->
+                    <!-- we also need to add src attribute to support old browsers -->
+
+                    <!-- This method is suitable for Art image responsibility (another image could be for low density instead of only another resolution for the same image -->
+
+                    <!-- ATTENTION: Chrome debugger will tell you information about using image incorrect (in property currentSrc).
+                         If you will examine it on the real small device with low px density - it will use correct image
+                         -->
+                    <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+                         alt="Photo 1"
+                         sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                         class="composition__photo composition__photo--p1"
+                         src="img/nat-1-large.jpg"
+                    >
+                    <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+                         alt="Photo 2"
+                         sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                         class="composition__photo composition__photo--p2"
+                         src="img/nat-2-large.jpg"
+                    >
+                    <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+                         alt="Photo 3"
+                         sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                         class="composition__photo composition__photo--p3"
+                         src="img/nat-3-large.jpg"
+                    >
+                    <!-- OLD IMAGES Before adding responsive image design
                     <img alt="Photo 1" class="composition__photo composition__photo--p1" src="img/nat-1-large.jpg">
                     <img alt="Photo 2" class="composition__photo composition__photo--p2" src="img/nat-2-large.jpg">
                     <img alt="Photo 3" class="composition__photo composition__photo--p3" src="img/nat-3-large.jpg">
+                    -->
                 </div>
             </div>
         </div>
@@ -320,7 +353,19 @@
 </main>
 <footer class="footer">
     <div class="footer__logo-box">
-        <img src="img/logo-green-2x.png" alt="Full logo" class="footer__logo">
+        <picture class="footer__logo">
+            <!-- media here is a media query descriptor -->
+            <!-- we force to use this set of images for such media query -->
+            <!--it means that we will use another image for small devices, and then browser will decide which image should be loaded based on device and image resolutions -->
+            <source
+                    media="(max-width: 37.5rem)"
+                    srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x"
+            >
+            <!-- 1x and 2x is density descriptor-->
+            <!-- you could find DPR property in chrome debugger tools and set 1,2, or 3. 2 is default value and check how image changes -->
+            <!-- we also need to add src attribute to support old browsers which doesn't understand source set -->
+            <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo" src="img/logo-green-2x.png">
+        </picture>
     </div>
     <div class="row">
         <div class="col-1-of-2">

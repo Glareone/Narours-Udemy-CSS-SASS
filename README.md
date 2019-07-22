@@ -2,7 +2,7 @@ Hi!
 Here you could find the result set of Udemy Advanced CSS and SASS Courses:
 [https://glareone.github.io/Udemy-Advanced-CSS-SASS/]
 
-To run project locally with hot reloading you could use next command:
+To run project locally with hot reloading you could use next commands:
 1. npm install
 2. npm run start
 

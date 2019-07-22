@@ -22,8 +22,8 @@
   // this comma in condition means OR. (min-resolution: 192dpi) and (min-width: 37.5em) OR (min-width: 112.5em)
   // >= 600px or >= 1800px (125em)
   // ATTENTION: but min-resolution: 192dpi isn't supported by safari, that's why we need to add -webkit-device-pixel-ratio condition
-  @media (min-resolution: 192dpi) and (min-width: 37.5em),
-          (-webkit-device-pixel-ratio: 2),
+  @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+        only screen and(-webkit-device-pixel-ratio: 2) and (min-width: 37.5em),
           (min-width: 125em) {
     background-image: linear-gradient(
                     to bottom,

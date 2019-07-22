@@ -320,7 +320,17 @@
 </main>
 <footer class="footer">
     <div class="footer__logo-box">
-        <img src="img/logo-green-2x.png" alt="Full logo" class="footer__logo">
+        <picture class="footer__logo">
+            <!-- media here is a media query descriptor -->
+            <!-- we force to use this set of images for such media query -->
+            <!--it means that we will use another image for small devices, and then device will decide which image should be loaded based on its resolution and screen resolution -->
+            <source
+                    media="(max-width: 37.5rem)"
+                    srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x"
+            >
+            <!-- 1x and 2x is density descriptor-->
+            <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo">
+        </picture>
     </div>
     <div class="row">
         <div class="col-1-of-2">

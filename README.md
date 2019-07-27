@@ -1,6 +1,6 @@
 Hi!
 Here you could find the result set of Udemy Advanced CSS and SASS Courses:
-[https://glareone.github.io/Udemy-Advanced-CSS-SASS/]
+[https://glareone.github.io/Natours-Frontend-Portfolio-Project-Layouts-Design/]
 
 To run project locally with hot reloading you could use next commands:
 1. npm install
